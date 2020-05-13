@@ -1,0 +1,17 @@
+<div class="signup-form">
+    <%= form_for(@user, url: user_path, method: 'patch') do |f| %>
+		<h2>Edit Profile - <%= @user.user_name %></h2>
+		<hr>
+        <div class="form-group">
+			<label>Full Name</label>
+        	<%= f.text_field :full_name, class: 'form-control', required: true %>
+        </div>
+        <div class="form-group">
+			<label>Email Address</label>
+        	<%= f.email_field :email, class: 'form-control', required: true %>
+        </div>
+		<div class="form-group">
+            <%= f.submit "Save", class: 'btn btn-primary btn-block btn-lg' %>
+        </div>
+    <% end %>
+</div>
