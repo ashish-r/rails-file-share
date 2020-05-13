@@ -1,0 +1,39 @@
+    <div class="container">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <h2>
+                            <% if @user %>
+                                Shared file from <b><%= @user.full_name %></b>
+                            <% else %>
+                                File not available
+                            <% end %>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            <% if @document %>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Upload Date</th>
+                            <th>Size</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><%= @document.user_document.filename %></td>
+                            <td><%= @document.user_document.created_at.strftime("%-d %b %Y %H:%M") %></td>
+                            <td><%= file_size_verbose @document.user_document.byte_size %></td>
+                            <td>
+                                <%= link_to 'Download', @document.user_document, download: '' %>
+                            </td>
+                        </tr>     
+                    </tbody>
+                </table>
+            <% end %>
+        </div>
+    </div>    

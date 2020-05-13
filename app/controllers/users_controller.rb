@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     end
     
     def create
-        @user = User.new(create_user_params)
+        @user = User.new(user_params)
         if @user.save
             session[:user_id] = @user.id
             redirect_to '/' 
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
 
     def update
         @user = User.find(session[:user_id])
-        if @user.update_attributes(update_user_params) 
+        if @user.update(user_params) 
             @profile_updated = true
             render :show
         else
@@ -33,10 +33,7 @@ class UsersController < ApplicationController
     end
     
     private
-    def create_user_params
+    def user_params
         params.require(:user).permit(:user_name, :full_name, :email, :password)
-    end
-    def update_user_params
-        params.require(:user).permit(:full_name, :email)
     end
 end

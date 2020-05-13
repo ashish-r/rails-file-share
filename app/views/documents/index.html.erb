@@ -1,0 +1,80 @@
+    <div class="container">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <h2>
+                            File Dashboard <b>
+                                <% if @documents.any? %>
+                                    <% if @documents.count == 1 %>
+                                        1 File
+                                    <% else %>
+                                        <%= @documents.count %> Files
+                                    <% end %>
+                                <% else %>
+                                    No Files
+                                <% end %>
+                            </b>
+                        </h2>
+                    </div>
+                    <div class="col-sm-3">
+                        <%= form_for(:document, url: documents_path, method: 'post') do |f| %>
+                              <div class="custom-file add-new">
+                                <%= f.label :user_document, class:"custom-file-label" do %>Upload File
+                                    <%= f.file_field :user_document, class: 'custom-file-input', 
+                                        onchange: "this.form.submit();" %>
+                                <% end %>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+            <% if @documents.any? %>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Upload Date</th>
+                            <th>Size</th>
+                            <th>Actions</th>
+                            <th>Sharing</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @documents.each do |document| %>
+                            <% if document.user_document.attached? %>
+                                <tr>
+                                    <td><%= document.user_document.filename %></td>
+                                    <td><%= document.user_document.created_at.strftime("%-d %b %Y %H:%M") %></td>
+                                    <td><%= file_size_verbose document.user_document.byte_size %></td>
+                                    <td>
+                                        <%= link_to 'Download', document.user_document, download: '' %> |&nbsp;
+                                        <%= link_to "Delete", document_path(document.key),
+                                            data: {:confirm => 'Are you sure you want to delete?'}, 
+                                            method: :delete %>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <%= form_for(:document, url: document_path(document.key), 
+                                                method: 'patch') do |f| %>
+                                                <div class="custom-control custom-switch">
+                                                    <input class="custom-control-input" type="checkbox" 
+                                                        onclick="this.form.submit();" value="1" <%= 'checked' if document.shared %>
+                                                        name="document[shared]" id="share-<%= document.key %>"/>
+                                                    <label class="custom-control-label" 
+                                                        for="share-<%= document.key %>"></label>
+                                                </div>
+                                            <% end %>
+                                            <% if document.shared %>
+                                                <%= link_to "Link", document_path(document.key), target: :_blank %>
+                                        <% end %>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <% end %>
+                        <% end %>
+                    </tbody>
+                </table>
+            <% end %>
+        </div>
+    </div>    
