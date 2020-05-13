@@ -10,7 +10,7 @@ class UsersController < ApplicationController
             session[:user_id] = @user.id
             redirect_to '/' 
         else
-            render 'new'
+            render :new
         end
     end
 
@@ -25,10 +25,10 @@ class UsersController < ApplicationController
     def update
         @user = User.find(session[:user_id])
         if @user.update_attributes(update_user_params) 
-            redirect_to '/profile' 
+            @profile_updated = true
+            render :show
         else
-            puts @user.errors.full_messages
-            render 'edit'
+            render :edit
         end
     end
     

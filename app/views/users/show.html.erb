@@ -17,5 +17,10 @@
                 </button>
             <% end %>
         </div>
+        <% if @profile_updated %> 
+            <div class="form-message">
+                <small class="text-success">Profile updated successfully!</small>
+            </div>
+        <% end %>
     </form>
 </div>
