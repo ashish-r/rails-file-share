@@ -8,7 +8,7 @@ class DocumentsController < ApplicationController
     end
 
     def create
-        @documents = current_user.documents.create(create_document_params)
+        current_user.documents.create(create_document_params)
         redirect_to '/'
     end
 
