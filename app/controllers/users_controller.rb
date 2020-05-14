@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
     before_action :require_user, except: [:new, :create]
     def new
-        @user = User.new
+        if session[:user_id]
+            redirect_to '/' if User.find(session[:user_id])
+        else
+            @user = User.new
+        end
     end
     
     def create

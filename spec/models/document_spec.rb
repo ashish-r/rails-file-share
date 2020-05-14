@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Document, type: :model do
   context 'Document model validations' do
     let (:valid_user) { User.create({
-      user_name: 'bond007',
+      user_name: 'bond007doc',
       full_name: 'James Bond',
       email: 'james@bond.com',
       password: 'validPwd123'

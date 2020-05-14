@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   context 'User model validations' do
     let (:valid_params) { {
-      user_name: 'bond007',
+      user_name: 'bond007user',
       full_name: 'James Bond',
       email: 'james@bond.com',
       password: 'validPwd123'
