@@ -4,7 +4,7 @@ class DocumentsController < ApplicationController
     before_action :require_user, except: [:show]
 
     def index
-        @documents = current_user.documents.sort_by(&:created_at).reverse
+        @documents = current_user.documents.order(created_at: :desc)
     end
 
     def create
@@ -13,19 +13,19 @@ class DocumentsController < ApplicationController
     end
 
     def show
-        @document = Document.find_by(key: params[:id], shared: true)
+        @document = Document.find_by!(key: params[:id], shared: true)
         @user = User.find(@document[:user_id]) if @document
     end
 
     def update
         @checked = (params[:document] && (params[:document][:shared] == '1')) ? true : false
-        @document = current_user.documents.find_by_key(params[:id])
+        @document = current_user.documents.find_by!(key: params[:id])
         @document && @document.update(shared: @checked) 
         redirect_to '/'
     end
 
     def destroy
-        @document = current_user.documents.find_by_key(params[:id])
+        @document = current_user.documents.find_by!(key: params[:id])
         @document && @document.user_document.purge_later
         @document && @document.destroy
         redirect_to '/'
