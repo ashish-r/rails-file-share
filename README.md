@@ -3,9 +3,6 @@
 ## Objective
 Build an online file sharing application using Rails.
 
-## Features
-**Note:** The UI mock-ups provided here are for ***representational purpose only***. You don’t need to abide by this design, but make sure all of the stated requirements are sufficiently met.
-
 This application should have the following features:
 
 ### User Management
@@ -21,7 +18,7 @@ This application should have the following features:
      3. Include at least one lower
      4. Include at least one letter
 
-  ![Screenshot](../rapid-share-assets/pasted&#32;image&#32;0.png)
+  ![Screenshot](https://raw.githubusercontent.com/ashish-r/rails-file-share/master/screenshots/signup.png)
 
 #### Login
 
@@ -29,7 +26,7 @@ This application should have the following features:
   1. If the login is successful: They should be taken to their “File Dashboard” which will serve as their homepage and display the various files associated with their account.
   2. If the login is unsuccessful: Then the following message should be displayed - “Couldn’t find that user! Please try again”
 
-  ![Screenshot](../rapid-share-assets/pasted&#32;image&#32;0(1).png)
+  ![Screenshot](https://raw.githubusercontent.com/ashish-r/rails-file-share/master/screenshots/login.png)
 
 #### Logout
 
@@ -42,7 +39,7 @@ A logged in user should be able to log out by clicking a button. Once a user is 
   1. Name
   2. Email address
 
-  ![Screenshot](../rapid-share-assets/pasted&#32;image&#32;0(2).png)
+  ![Screenshot](https://raw.githubusercontent.com/ashish-r/rails-file-share/master/screenshots/profile.png)
 
 
 ### File Management
@@ -57,18 +54,13 @@ Here are the various features needed for file management:
   - **File Share**: A user should be able to turn on public sharing of a file using a “ON/OFF” toggle control. Once public sharing is turned on, then a unique URL should be made available next to the toggle button which is publically accessible. The user shouldn’t be able to delete or share this file.
   - **File Deletion**: A user should be able to click on the delete action next to every file to delete the associated file.
 
-  ![Screenshot](../rapid-share-assets/pasted&#32;image&#32;0(3).png)
+  ![Screenshot](https://raw.githubusercontent.com/ashish-r/rails-file-share/master/screenshots/home.png)
 
 
 ### File Sharing
 
 There should be a stand-alone page for a shared file.
 
-  ![Screenshot](../rapid-share-assets/pasted&#32;image&#32;0(4).png)
+  ![Screenshot](https://raw.githubusercontent.com/ashish-r/rails-file-share/master/screenshots/sharing.png)
 
 
-## Technical requirements
-
-- You are allowed to use allowed to use gems/libraries for file upload and session management (e.g. paperclip, devise etc).
-- Write unit test cases for all model and controller methods using rspec.
-- Please make sure that you're using Rails 4.1.15 at max, and rspec 3.X versions.
