@@ -1,3 +1,5 @@
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/ashish-r/rails-file-share/blob/master/LICENSE)
+
 # File Sharing Application - Product Document
 
 ## Objective
