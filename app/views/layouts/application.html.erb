@@ -21,7 +21,9 @@
           <%= link_to "Log out", logout_path, method: "delete" %>
         <% else %> 
           <%= link_to "Login", 'login' %>
-          <%= link_to "Sign Up", 'signup' %>
+          <% if ENV['FORBID_REGISTER'] != 'true'; %>
+            <%= link_to "Sign Up", 'signup' %>
+          <% end %>
         <% end %> 
       </div>
     </nav>

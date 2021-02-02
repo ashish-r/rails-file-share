@@ -20,5 +20,7 @@
             </div>
         <% end %>
     <% end %>
+    <% if ENV['FORBID_REGISTER'] != 'true'; %>
 	<div class="text-center">Don't have an account? <%= link_to "Sign up here", 'signup' %></div>
+    <% end %>
 </div>
